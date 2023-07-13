@@ -19,6 +19,12 @@ const userSchema = new Schema(
         gameId: { type: String, required: true },
         rating: { type: Number, required: true }
       }
+    ],
+    reviews: [
+      {
+        gameId: { type: String, required: true },
+        review: { type: String, required: true }
+      }
     ]
   },
   { timestamps: true }
