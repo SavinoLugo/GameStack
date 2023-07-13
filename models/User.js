@@ -4,7 +4,16 @@ const userSchema = new Schema(
   {
     name: { type: String, required: true },
     email: { type: String, required: true },
-    passwordDigest: { type: String, required: true }
+    passwordDigest: { type: String, required: true },
+    favorites: [
+      {
+        gameId: { type: String, required: true },
+        title: { type: String, required: true },
+        description: { type: String, required: true },
+        rating: { type: Number, required: true },
+        image: { type: String, required: true }
+      }
+    ]
   },
   { timestamps: true }
 )
