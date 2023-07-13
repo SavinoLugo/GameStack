@@ -10,8 +10,14 @@ const userSchema = new Schema(
         gameId: { type: String, required: true },
         title: { type: String, required: true },
         description: { type: String, required: true },
-        rating: { type: Number, required: true },
+        apiRating: { type: Number, required: true },
         image: { type: String, required: true }
+      }
+    ],
+    ratings: [
+      {
+        gameId: { type: String, required: true },
+        rating: { type: Number, required: true }
       }
     ]
   },
