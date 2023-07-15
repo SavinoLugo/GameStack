@@ -1,9 +1,11 @@
 import { CheckSession } from './services/Auth'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
+import GameDetail from './pages/GameDetail'
 import Register from './pages/Register'
 import SignIn from './pages/Signin'
 import Nav from './components/Nav'
+import Games from './pages/Games'
 import Home from './pages/Home'
 import './App.css'
 
@@ -35,6 +37,11 @@ const App = () => {
           <Route path="/" element={<Home />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/games" element={<Games />} />
+          <Route
+            path="/games/:gameId"
+            element={user ? <GameDetail user={user} setUser={setUser} /> : null}
+          />
         </Routes>
       </main>
     </div>

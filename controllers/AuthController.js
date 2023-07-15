@@ -22,7 +22,7 @@ const Register = async (req, res) => {
 const Login = async (req, res) => {
   try {
     const { email, password } = req.body
-    const user = await User.findOne({ email })
+    const user = await User.findOne({ email }).populate('favorites')
     let matched = await middleware.comparePassword(
       user.passwordDigest,
       password
@@ -30,7 +30,8 @@ const Login = async (req, res) => {
     if (matched) {
       let payload = {
         id: user.id,
-        email: user.email
+        email: user.email,
+        favorites: user.favorites
       }
       let token = middleware.createToken(payload)
       return res.send({ user: payload, token })

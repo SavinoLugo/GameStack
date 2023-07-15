@@ -5,27 +5,9 @@ const userSchema = new Schema(
     name: { type: String, required: true },
     email: { type: String, required: true },
     passwordDigest: { type: String, required: true },
-    favorites: [
-      {
-        gameId: { type: String, required: true },
-        title: { type: String, required: true },
-        description: { type: String, required: true },
-        apiRating: { type: Number, required: true },
-        image: { type: String, required: true }
-      }
-    ],
-    ratings: [
-      {
-        gameId: { type: String, required: true },
-        rating: { type: Number, required: true }
-      }
-    ],
-    reviews: [
-      {
-        gameId: { type: String, required: true },
-        review: { type: String, required: true }
-      }
-    ]
+    favorites: [{ type: Schema.Types.ObjectId, ref: 'Game' }],
+    ratings: [{ type: Schema.Types.ObjectId, ref: 'Rating' }],
+    reviews: [{ type: Schema.Types.ObjectId, ref: 'Review' }]
   },
   { timestamps: true }
 )
