@@ -18,12 +18,12 @@ router.post(
   middleware.verifyToken,
   controller.AddGame
 )
-// router.delete(
-//   '/:gameId',
-//   middleware.stripToken,
-//   middleware.verifyToken,
-//   controller.RemoveGame
-// )
+router.delete(
+  '/remove/:userId/:gameId',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.RemoveGame
+)
 
 // router.get('/:gameId', middleware.stripToken, middleware.verifyToken)
 
