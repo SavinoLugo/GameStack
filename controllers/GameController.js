@@ -1,5 +1,16 @@
 const { Game, User } = require('../models')
 
+// const RemoveGame = async (req, res) => {
+//   let user = await User.findById(req.params.userId)
+//   const gameIndex = user.favorites.indexOf(req.params.gameId)
+
+//   if (gameIndex > -1) {
+//     user.favorites.splice(gameIndex, 1)
+//     await user.save()
+//     res.send(user)
+//   }
+// }
+
 const GetAllGames = async (req, res) => {
   let user = await User.findById(req.params.userId).populate('favorites')
   res.send(user.favorites)
@@ -25,4 +36,5 @@ const AddGame = async (req, res) => {
 module.exports = {
   GetAllGames,
   AddGame
+  // RemoveGame
 }

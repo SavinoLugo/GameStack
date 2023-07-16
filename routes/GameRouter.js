@@ -18,7 +18,13 @@ router.post(
   middleware.verifyToken,
   controller.AddGame
 )
+// router.delete(
+//   '/:gameId',
+//   middleware.stripToken,
+//   middleware.verifyToken,
+//   controller.RemoveGame
+// )
+
 // router.get('/:gameId', middleware.stripToken, middleware.verifyToken)
-// router.delete('/:gameId', middleware.stripToken, middleware.verifyToken)
 
 module.exports = router
