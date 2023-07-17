@@ -8,3 +8,11 @@ export const GetUserFavorites = async (userId) => {
     throw error
   }
 }
+export const RemoveUserFavorite = async (userId, gameId) => {
+  try {
+    const res = await Client.delete(`/games/remove/${userId}/${gameId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

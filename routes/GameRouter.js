@@ -1,10 +1,6 @@
 const router = require('express').Router()
 const controller = require('../controllers/GameController')
 const middleware = require('../middleware')
-//Routes
-//Getall games
-//Get a game by Id
-//Delete a game/Remove from favorites
 
 router.get(
   '/favorites/:userId',

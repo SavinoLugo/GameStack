@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { BASE_URL } from '../services/api'
-import axios from 'axios'
-import { GetUserFavorites } from '../services/games'
+import { GetUserFavorites, RemoveUserFavorite } from '../services/games'
 
 const Favorites = ({ user }) => {
   const [favorites, setFavorites] = useState([])
@@ -14,7 +12,10 @@ const Favorites = ({ user }) => {
     getFavorites()
   }, [user.id])
 
-  console.log(user)
+  const deleteFavorite = async (gameId) => {
+    await RemoveUserFavorite(user.id, gameId)
+    setFavorites(favorites.filter((game) => game._id !== gameId))
+  }
 
   return (
     <div>
@@ -23,6 +24,9 @@ const Favorites = ({ user }) => {
         <div key={game._id}>
           <h4>Title: {game.title}</h4>
           <h4>Metacritic: {game.apiRating}</h4>
+          <button onClick={() => deleteFavorite(game._id)}>
+            Remove from Favorites
+          </button>
         </div>
       ))}
     </div>
