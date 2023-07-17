@@ -7,8 +7,9 @@ const RemoveGame = async (req, res) => {
   if (gameIndex > -1) {
     user.favorites.splice(gameIndex, 1)
     await user.save()
-    res.send(user)
   }
+  await Game.findByIdAndDelete(req.params.gameId)
+  res.send({ msg: `Favorite removed for user ${req.params.userId}` })
 }
 
 const GetAllGames = async (req, res) => {

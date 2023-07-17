@@ -5,7 +5,7 @@ import { BASE_URL } from '../services/api'
 import Client from '../services/api'
 import axios from 'axios'
 
-const GameDetail = ({ user, setUser }) => {
+const GameDetail = ({ user }) => {
   const [gameDetail, setGameDetail] = useState([])
   let { gameId } = useParams()
   const addAsFavorite = async () => {
@@ -13,7 +13,6 @@ const GameDetail = ({ user, setUser }) => {
       `${BASE_URL}/games/new/${user.id}`,
       gameDetail
     )
-    setUser({ ...user, favorites: [...user.favorites, response.data] })
   }
   useEffect(() => {
     const getGameDetail = async () => {
