@@ -2,6 +2,7 @@ import { CheckSession } from './services/Auth'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 import GameDetail from './pages/GameDetail'
+import Favorites from './pages/Favorites'
 import Register from './pages/Register'
 import SignIn from './pages/Signin'
 import Nav from './components/Nav'
@@ -42,6 +43,7 @@ const App = () => {
             path="/games/:gameId"
             element={user ? <GameDetail user={user} setUser={setUser} /> : null}
           />
+          <Route path="/favorites" element={<Favorites />} />
         </Routes>
       </main>
     </div>
