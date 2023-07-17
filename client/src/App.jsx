@@ -43,7 +43,10 @@ const App = () => {
             path="/games/:gameId"
             element={user ? <GameDetail user={user} setUser={setUser} /> : null}
           />
-          <Route path="/favorites" element={<Favorites />} />
+          <Route
+            path="/favorites"
+            element={user ? <Favorites user={user} /> : null}
+          />
         </Routes>
       </main>
     </div>
