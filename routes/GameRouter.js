@@ -21,6 +21,4 @@ router.delete(
   controller.RemoveGame
 )
 
-// router.get('/:gameId', middleware.stripToken, middleware.verifyToken)
-
 module.exports = router
