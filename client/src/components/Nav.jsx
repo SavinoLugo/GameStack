@@ -12,6 +12,7 @@ const Nav = ({ user, handleLogOut }) => {
         <Link to="/"> Home </Link>
         <Link to="/games"> Games</Link>
         <Link to="/favorites"> Favorites</Link>
+        <Link to="/post"> Review </Link>
       </nav>
     )
   }
@@ -21,6 +22,7 @@ const Nav = ({ user, handleLogOut }) => {
       <Link to="/">Home </Link>
       <Link to="/register"> Register </Link>
       <Link to="/signin"> SignIn </Link>
+      <Link to="/post"> Review </Link>
     </nav>
   )
 

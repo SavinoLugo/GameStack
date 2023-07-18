@@ -2,6 +2,7 @@ import { CheckSession } from './services/Auth'
 import { Route, Routes } from 'react-router'
 import { useState, useEffect } from 'react'
 import GameDetail from './pages/GameDetail'
+import ReviewPost from './pages/ReviewPost'
 import Favorites from './pages/Favorites'
 import Register from './pages/Register'
 import SignIn from './pages/Signin'
@@ -47,6 +48,7 @@ const App = () => {
             path="/favorites"
             element={user ? <Favorites user={user} /> : null}
           />
+          <Route path="/post" element={<ReviewPost />} />
         </Routes>
       </main>
     </div>
