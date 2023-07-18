@@ -1,5 +1,9 @@
-import { addReviewPost, getReviewPost } from '../services/reviewPost'
 import { useState, useEffect } from 'react'
+import {
+  addReviewPost,
+  getReviewPost,
+  updateReviewPost
+} from '../services/reviewPost'
 
 const ReviewPost = () => {
   const [posts, setPosts] = useState([])
@@ -8,13 +12,37 @@ const ReviewPost = () => {
     gamerTag: '',
     gameTitle: ''
   })
+  const [updateForm, setUpdateForm] = useState({
+    review: '',
+    gamerTag: '',
+    gameTitle: ''
+  })
+  const [isUpdating, setIsUpdating] = useState(false)
+  const [currentPostId, setCurrentPostId] = useState(null)
   const [submitted, setSubmitted] = useState(false)
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    let response = await addReviewPost(reviewForm)
+    await addReviewPost(reviewForm)
     setSubmitted(!submitted)
-    setReviewForm({ review: '' })
+    setReviewForm({ review: '', gamerTag: '', gameTitle: '' })
+  }
+
+  const handleUpdate = (postId, postDetails) => {
+    setUpdateForm(postDetails)
+    setCurrentPostId(postId)
+    setIsUpdating(true)
+  }
+
+  const handleUpdateChange = (event) => {
+    setUpdateForm({ ...updateForm, [event.target.name]: event.target.value })
+  }
+
+  const handleUpdateSubmit = async (event) => {
+    event.preventDefault()
+    await updateReviewPost(currentPostId, updateForm)
+    setIsUpdating(false)
+    setSubmitted(!submitted)
   }
 
   const handleChange = (event) => {
@@ -24,7 +52,6 @@ const ReviewPost = () => {
   useEffect(() => {
     const getPosts = async () => {
       let response = await getReviewPost()
-      console.log(response)
       setPosts(response)
     }
     getPosts()
@@ -55,12 +82,46 @@ const ReviewPost = () => {
           />
           <button type="submit">Add</button>
         </form>
+        {isUpdating && (
+          <form onSubmit={handleUpdateSubmit}>
+            <input
+              placeholder="GamerTag"
+              name="gamerTag"
+              onChange={handleUpdateChange}
+              value={updateForm.gamerTag}
+            />
+            <input
+              placeholder="Game Title"
+              name="gameTitle"
+              onChange={handleUpdateChange}
+              value={updateForm.gameTitle}
+            />
+            <input
+              placeholder="Review"
+              name="review"
+              onChange={handleUpdateChange}
+              value={updateForm.review}
+            />
+            <button type="submit">Update</button>
+          </form>
+        )}
       </div>
       {posts?.map((post) => (
         <div key={post._id}>
           <h5>Gamer Tag: {post.gamerTag}</h5>
           <h5>Game Title: {post.gameTitle}</h5>
           <h4>{post.review}</h4>
+          <button
+            onClick={() =>
+              handleUpdate(post._id, {
+                review: post.review,
+                gamerTag: post.gamerTag,
+                gameTitle: post.gameTitle
+              })
+            }
+          >
+            Update
+          </button>
         </div>
       ))}
     </div>
