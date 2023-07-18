@@ -2,7 +2,8 @@ import { useState, useEffect } from 'react'
 import {
   addReviewPost,
   getReviewPost,
-  updateReviewPost
+  updateReviewPost,
+  deleteReviewPost
 } from '../services/reviewPost'
 
 const ReviewPost = () => {
@@ -20,6 +21,15 @@ const ReviewPost = () => {
   const [isUpdating, setIsUpdating] = useState(false)
   const [currentPostId, setCurrentPostId] = useState(null)
   const [submitted, setSubmitted] = useState(false)
+
+  const handleDelete = async (postId) => {
+    try {
+      await deleteReviewPost(postId)
+      setSubmitted(!submitted)
+    } catch (error) {
+      console.error('Failed to delete post:', error)
+    }
+  }
 
   const handleSubmit = async (event) => {
     event.preventDefault()
@@ -80,7 +90,16 @@ const ReviewPost = () => {
             onChange={handleChange}
             value={reviewForm.review}
           />
-          <button type="submit">Add</button>
+          <button
+            type="submit"
+            disabled={
+              !reviewForm.gamerTag ||
+              !reviewForm.gameTitle ||
+              !reviewForm.review
+            }
+          >
+            Add
+          </button>
         </form>
         {isUpdating && (
           <form onSubmit={handleUpdateSubmit}>
@@ -110,7 +129,7 @@ const ReviewPost = () => {
         <div key={post._id}>
           <h5>Gamer Tag: {post.gamerTag}</h5>
           <h5>Game Title: {post.gameTitle}</h5>
-          <h4>{post.review}</h4>
+          <h5>{post.review}</h5>
           <button
             onClick={() =>
               handleUpdate(post._id, {
@@ -122,6 +141,7 @@ const ReviewPost = () => {
           >
             Update
           </button>
+          <button onClick={() => handleDelete(post._id)}>Delete</button>
         </div>
       ))}
     </div>
