@@ -99,3 +99,44 @@ html {
 .infoContainer h4 {
   flex-basis: 48%; /* Adjust as needed */
 }
+
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+label {
+  margin-bottom: 5px;
+}
+
+input,
+textarea {
+  margin-bottom: 10px;
+}
+
+.reviewContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.reviewPost {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+form {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+  max-width: 400px; 
+  margin: 0 auto; 
+}
+.reviewPost {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
