@@ -50,6 +50,7 @@ const GameDetail = ({ user }) => {
       <div className="infoContainer">
         <h4>Metacritic: {gameDetail.metacritic}</h4>
         <h4>Released: {gameDetail.released}</h4>
+        <h4>My Rating {ratingForm.userRating}/5</h4>
       </div>
       <form onSubmit={handleRatingSubmit}>
         <label htmlFor="rating">Your Rating:</label>
@@ -58,7 +59,7 @@ const GameDetail = ({ user }) => {
           type="number"
           min="1"
           max="5"
-          step="0.1"
+          step="0.5"
           value={ratingForm.userRating}
           onChange={handleRatingChange}
         />
