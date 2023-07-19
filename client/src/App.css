@@ -149,3 +149,35 @@ textarea {
   height: 75px; 
   resize: vertical;
 }
+
+.addBtn {
+  padding: 4px 8px;
+  font-size: 14px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+  margin: auto;
+  color: black;
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.updateBtn {
+  padding: 8px 16px;
+  margin-right: 8px;
+  font-size: 14px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}
+
+.deleteBtn {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  background-color: #f1f1f1;
+  cursor: pointer;
+}

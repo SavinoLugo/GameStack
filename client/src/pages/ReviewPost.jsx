@@ -92,6 +92,7 @@ const ReviewPost = () => {
           ></textarea>
 
           <button
+            className="addBtn"
             type="submit"
             disabled={
               !reviewForm.gamerTag ||
@@ -131,18 +132,26 @@ const ReviewPost = () => {
           <h5>Gamer Tag: {post.gamerTag}</h5>
           <h5>Game Title: {post.gameTitle}</h5>
           <h5>{post.review}</h5>
-          <button
-            onClick={() =>
-              handleUpdate(post._id, {
-                review: post.review,
-                gamerTag: post.gamerTag,
-                gameTitle: post.gameTitle
-              })
-            }
-          >
-            Update
-          </button>
-          <button onClick={() => handleDelete(post._id)}>Delete</button>
+          <div className="buttonContainer">
+            <button
+              className="updateBtn"
+              onClick={() =>
+                handleUpdate(post._id, {
+                  review: post.review,
+                  gamerTag: post.gamerTag,
+                  gameTitle: post.gameTitle
+                })
+              }
+            >
+              Update
+            </button>
+            <button
+              className="deleteBtn"
+              onClick={() => handleDelete(post._id)}
+            >
+              Delete
+            </button>
+          </div>
         </div>
       ))}
     </div>
