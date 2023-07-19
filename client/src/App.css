@@ -17,6 +17,11 @@ html {
 
 .title {
   text-align: center;
+  color: black;
+}
+.title :hover{
+  text-align: center;
+  color: black;
 }
 
 .NavLinks {
@@ -140,3 +145,7 @@ form {
   margin-bottom: 10px;
 }
 
+textarea {
+  height: 75px; 
+  resize: vertical;
+}

@@ -84,12 +84,13 @@ const ReviewPost = () => {
             onChange={handleChange}
             value={reviewForm.gameTitle}
           />
-          <input
+          <textarea
             placeholder="Review"
             name="review"
             onChange={handleChange}
             value={reviewForm.review}
-          />
+          ></textarea>
+
           <button
             type="submit"
             disabled={
