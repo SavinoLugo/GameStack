@@ -6,8 +6,16 @@ import Client from '../services/api'
 import axios from 'axios'
 
 const GameDetail = ({ user }) => {
-  const [gameDetail, setGameDetail] = useState({})
   let { gameId } = useParams()
+
+  const [ratingForm, setRatingForm] = useState({
+    gameName: '',
+    gameId: gameId,
+    userRating: '',
+    user: user.id
+  })
+
+  const [gameDetail, setGameDetail] = useState({})
   const addAsFavorite = async () => {
     const response = await Client.post(
       `${BASE_URL}/games/new/${user.id}`,
