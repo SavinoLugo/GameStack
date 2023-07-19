@@ -1,5 +1,5 @@
 import { API_KEY, RAWG_URL } from '../services/globals'
-import { addRating } from '../services/rating'
+import { addRating, getUserRating } from '../services/rating'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { BASE_URL } from '../services/api'
@@ -16,6 +16,8 @@ const GameDetail = ({ user }) => {
     user: user.id
   })
 
+  const [rating, setRating] = useState(null)
+
   const [gameDetail, setGameDetail] = useState({})
 
   const handleRatingChange = (event) => {
@@ -24,7 +26,14 @@ const GameDetail = ({ user }) => {
 
   const handleRatingSubmit = async (event) => {
     event.preventDefault()
-    await addRating(ratingForm)
+    let rating = await addRating(ratingForm)
+    setRating(rating)
+    setRatingForm({
+      gameName: '',
+      gameId: gameId,
+      userRating: '',
+      user: user.id
+    })
   }
 
   const addAsFavorite = async () => {
@@ -37,6 +46,8 @@ const GameDetail = ({ user }) => {
         `${RAWG_URL}/games/${gameId}?key=${API_KEY}`
       )
       setGameDetail(response.data)
+      const rating = await getUserRating(user.id, gameId)
+      setRating(rating)
       setRatingForm((prev) => ({ ...prev, gameName: response.data.name }))
     }
     getGameDetail()
@@ -50,7 +61,11 @@ const GameDetail = ({ user }) => {
       <div className="infoContainer">
         <h4>Metacritic: {gameDetail.metacritic}</h4>
         <h4>Released: {gameDetail.released}</h4>
-        <h4>My Rating {ratingForm.userRating}/5</h4>
+        {rating ? (
+          <h4>My Rating: {rating.userRating}</h4>
+        ) : (
+          <h4>Not rated yet</h4>
+        )}
       </div>
       <form onSubmit={handleRatingSubmit}>
         <label htmlFor="rating">Your Rating:</label>

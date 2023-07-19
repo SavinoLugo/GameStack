@@ -8,3 +8,12 @@ export const addRating = async (ratingForm) => {
     throw error
   }
 }
+
+export const getUserRating = async (userId, gameId) => {
+  try {
+    const res = await Client.get(`/rating/${gameId}/${userId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

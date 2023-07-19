@@ -6,7 +6,10 @@ const AddRating = async (req, res) => {
 }
 
 const ShowRating = async (req, res) => {
-  let rating = await Rating.find()
+  let rating = await Rating.findOne({
+    user: req.params.userId,
+    gameId: req.params.gameId
+  })
   res.send(rating)
 }
 

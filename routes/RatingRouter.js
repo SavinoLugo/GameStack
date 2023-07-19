@@ -9,7 +9,7 @@ router.post(
   controller.AddRating
 )
 router.get(
-  '/show',
+  '/:gameId/:userId',
   middleware.stripToken,
   middleware.verifyToken,
   controller.ShowRating
