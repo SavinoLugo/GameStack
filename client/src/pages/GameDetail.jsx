@@ -62,7 +62,7 @@ const GameDetail = ({ user }) => {
           value={ratingForm.userRating}
           onChange={handleRatingChange}
         />
-        <button type="submit">Submit Rating</button>
+        <button type="submit">Add Rating</button>
       </form>
       <button onClick={addAsFavorite}>Add Favorite</button>
     </div>
