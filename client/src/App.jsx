@@ -48,7 +48,7 @@ const App = () => {
             path="/favorites"
             element={user ? <Favorites user={user} /> : null}
           />
-          <Route path="/post" element={<ReviewPost />} />
+          <Route path="/post" element={<ReviewPost user={user} />} />
         </Routes>
       </main>
     </div>

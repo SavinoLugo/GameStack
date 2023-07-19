@@ -12,7 +12,6 @@ export const addReviewPost = async (reviewForm) => {
 
 export const getReviewPost = async () => {
   try {
-    console.log('Getting reviews')
     const res = await Client.get(`${BASE_URL}/reviewPosts/all`)
     return res.data
   } catch (error) {

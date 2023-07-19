@@ -6,12 +6,13 @@ import {
   deleteReviewPost
 } from '../services/reviewPost'
 
-const ReviewPost = () => {
+const ReviewPost = (props) => {
   const [posts, setPosts] = useState([])
   const [reviewForm, setReviewForm] = useState({
     review: '',
     gamerTag: '',
-    gameTitle: ''
+    gameTitle: '',
+    user: props.user.id
   })
   const [updateForm, setUpdateForm] = useState({
     review: '',

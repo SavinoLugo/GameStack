@@ -9,7 +9,6 @@ const Games = () => {
   useEffect(() => {
     const getGames = async () => {
       const response = await axios.get(`${RAWG_URL}/games?key=${API_KEY}`)
-      console.log(response)
       setGames(response.data.results)
     }
     getGames()
