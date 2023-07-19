@@ -6,7 +6,7 @@ import Client from '../services/api'
 import axios from 'axios'
 
 const GameDetail = ({ user }) => {
-  const [gameDetail, setGameDetail] = useState([])
+  const [gameDetail, setGameDetail] = useState({})
   let { gameId } = useParams()
   const addAsFavorite = async () => {
     const response = await Client.post(
@@ -24,10 +24,14 @@ const GameDetail = ({ user }) => {
     getGameDetail()
   }, [gameId])
   return (
-    <div>
+    <div className="gameDetailContainer">
       <h2>{gameDetail.name}</h2>
-      <img src={gameDetail.background_image} alt="" />
-      <p>{gameDetail.description_raw}</p>
+      <img className="gameImage" src={gameDetail.background_image} alt="" />
+      <p className="description">{gameDetail.description_raw}</p>
+      <div className="infoContainer">
+        <h4>Metacritic: {gameDetail.metacritic}</h4>
+        <h4>Released: {gameDetail.released}</h4>
+      </div>
       <button onClick={addAsFavorite}>Add Favorite</button>
     </div>
   )

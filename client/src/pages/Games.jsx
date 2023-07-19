@@ -14,10 +14,12 @@ const Games = () => {
     }
     getGames()
   }, [])
+
   return (
-    <div>
+    <div className="gameDiv">
       {games.map((game) => (
-        <Link to={`${game.id}`} key={game.id}>
+        <Link to={`${game.id}`} key={game.id} className="gameLink">
+          <img className="gameImage" src={game.background_image} alt="" />
           <h4>{game.name}</h4>
         </Link>
       ))}

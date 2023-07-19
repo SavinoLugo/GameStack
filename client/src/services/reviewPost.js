@@ -1,5 +1,4 @@
 import Client from './api'
-import axios from 'axios'
 import { BASE_URL } from './api'
 
 export const addReviewPost = async (reviewForm) => {
@@ -10,6 +9,7 @@ export const addReviewPost = async (reviewForm) => {
     throw error
   }
 }
+
 export const getReviewPost = async () => {
   try {
     console.log('Getting reviews')

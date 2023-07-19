@@ -5,35 +5,30 @@ const Nav = ({ user, handleLogOut }) => {
   if (user) {
     userOptions = (
       <nav>
-        <h3>Welcome {user.email}!</h3>
+        <h3 className="welcomeMsg">Welcome {user.email}!</h3>
         <Link onClick={handleLogOut} to="/">
           SignOut
         </Link>
-        <Link to="/"> Home </Link>
-        <Link to="/games"> Games</Link>
-        <Link to="/favorites"> Favorites</Link>
-        <Link to="/post"> Review </Link>
+        <Link to="/games">Games</Link>
+        <Link to="/favorites">Favorites</Link>
+        <Link to="/post">Review</Link>
       </nav>
     )
   }
 
   const publicOptions = (
     <nav className="NavLinks">
-      <Link to="/">Home </Link>
-      <Link to="/register"> Register </Link>
-      <Link to="/signin"> SignIn </Link>
-      <Link to="/post"> Review </Link>
+      <Link to="/register">Register</Link>
+      <Link to="/signin">SignIn</Link>
     </nav>
   )
 
   return (
     <header>
-      <Link to="/">
-        <div>
-          <h1>Nav Text</h1>
-        </div>
+      <Link to="/games" className="logo">
+        <h1 className="title">GameStack</h1>
       </Link>
-      {user ? userOptions : publicOptions}
+      <div className="navBar">{user ? userOptions : publicOptions}</div>
     </header>
   )
 }

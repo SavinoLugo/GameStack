@@ -50,6 +50,7 @@ const Register = () => {
           <div className="input-wrapper">
             <label htmlFor="email">Email</label>
             <input
+              className="email"
               onChange={handleChange}
               name="email"
               type="email"

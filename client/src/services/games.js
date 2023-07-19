@@ -16,3 +16,11 @@ export const RemoveUserFavorite = async (userId, gameId) => {
     throw error
   }
 }
+export const ShowUserRating = async () => {
+  try {
+    const res = await Client.get('/rating/show')
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}

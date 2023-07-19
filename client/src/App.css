@@ -1,7 +1,101 @@
+* {
+  text-align: center;
+}
+
 body {
   margin: 0;
 }
 
 a {
   text-decoration: none;
+}
+
+html {
+  background-color: rgb(213, 213, 213);
+
+}
+
+.title {
+  text-align: center;
+}
+
+.NavLinks {
+  text-align: end;
+  padding-right: 20px;
+  margin: 10px;
+}
+
+.col {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.welcomeMsg {
+  text-align: center;
+}
+
+.navBar {
+  display: flex;
+  justify-content:center;
+  align-items: center;
+}
+
+.navBar a {
+  margin-right: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.navBar a:hover {
+  color: grey;
+}
+
+.logo {
+  text-decoration: none;
+}
+
+
+
+.gameDiv {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.gameImage {
+  max-width: 100%;
+  height: auto;
+  margin: 10px;
+  max-height: 400px;
+}
+
+
+.gameLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.gameLink:hover,
+.gameLink:focus {
+  color: inherit;
+  text-decoration: none;
+}
+.description {
+  font-size: 14px;
+}
+.gameDetailContainer {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.infoContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.infoContainer h4 {
+  flex-basis: 48%; /* Adjust as needed */
 }
