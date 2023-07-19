@@ -6,7 +6,6 @@ const AddReviewPost = async (req, res) => {
 }
 
 const AllReviewPosts = async (req, res) => {
-  console.log('Inside of all posts')
   let posts = await ReviewPost.find()
   res.send(posts)
 }
